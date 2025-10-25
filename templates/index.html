@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <style>
+      :root{
+        --fondo: #eaf6ff;        /* azul tenue */
+        --texto: #0b2f4a;       /* color texto principal */
+        --acento: #1e90ff;      /* color acento */
+        --card: #ffffffcc;      /* fondo tarjeta semitransparente */
+        --radio: 10px;
+      }
+      body {
+        background-color: var(--fondo);
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: var(--texto);
+        margin: 0;
+        padding: 2rem;
+      }
+      main {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: 0.5px;
+      }
+      p { font-size: 1.05rem; margin-bottom: 1.25rem; }
+      .card {
+        background: var(--card);
+        padding: 1.25rem 1.5rem;
+        border-radius: var(--radio);
+        box-shadow: 0 6px 18px rgba(11,47,74,0.08);
+      }
+      label { display:block; margin-bottom:0.5rem; font-weight:600; }
+      select#categoria {
+        width: 100%;
+        max-width: 420px;
+        padding: 0.6rem 0.8rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #cfe8ff;
+        background: linear-gradient(180deg,#fff,#f7fbff);
+        color: var(--texto);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+        transition: box-shadow .15s ease, transform .08s ease;
+      }
+      select#categoria:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(30,144,255,0.12);
+        transform: translateY(-1px);
+      }
+      .links {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+      }
+      .links a { color: var(--acento); text-decoration: none; }
+      .links a:hover { text-decoration: underline; }
+      @media (max-width:520px){
+        body { padding: 1rem; }
+        h1 { font-size: 1.6rem; }
+      }
+    </style>
+
+    <main class="card">
+      <h1>Bienvenido al Menú de Películas</h1>
+      <p>Selecciona una categoría para ver las películas disponibles.</p>
+
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" name="categoria" aria-label="Seleccionar categoría">
+        <option value="">-- Elige categoría --</option>
+        <option value="/suspenso">Suspenso</option>
+        <option value="/terror">Terror</option>
+        <option value="/romance">Romance</option>
+        <option value="/infantil">Infantil</option>
+      </select>
+
+      <div class="links">
+        <noscript>
+          <p>Si JavaScript está desactivado, usa los enlaces:</p>
+          <ul>
+            <li><a href="/suspenso">Suspenso</a></li>
+            <li><a href="/terror">Terror</a></li>
+            <li><a href="/romance">Romance</a></li>
+            <li><a href="/infantil">Infantil</a></li>
+          </ul>
+        </noscript>
+      </div>
+    </main>
+
+    <script>
+      document.getElementById('categoria').addEventListener('change', function() {
+        if (this.value) window.location.href = this.value;
+      });
+    </script>
+{% endblock %}

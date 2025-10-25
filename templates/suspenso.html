@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Suspenso{% endblock %}
+
+{% block content %}
+    <h1>Películas de Suspenso</h1>
+    <ul>
+        {% for pelicula in peliculas %}
+            <li><strong>{{ pelicula.titulo }}</strong>: {{ pelicula.sinopsis }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+ 
+ 
+

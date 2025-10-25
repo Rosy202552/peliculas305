@@ -1,0 +1,14 @@
+  
+{% extends 'base.html' %}
+
+{% block title %}Romance{% endblock %}
+
+{% block content %}
+    <h1>Películas de Romance</h1>
+    <ul>
+        {% for pelicula in peliculas %}
+            <li><strong>{{ pelicula.titulo }}</strong>: {{ pelicula.sinopsis }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+ 
